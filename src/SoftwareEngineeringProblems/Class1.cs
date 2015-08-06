@@ -11,6 +11,12 @@ namespace SoftwareEngineeringProblems
     {
         public Class1()
         {
+
+        }
+
+        static public int Add(int x, int y)
+        {
+            return x + y;
         }
     }
 }
