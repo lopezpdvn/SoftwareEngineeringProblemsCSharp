@@ -1,16 +1,19 @@
 ﻿{
   "version": "1.0.0-*",
   "description": "SoftwareEngineeringProblems.Tests Console Application",
-  "authors": [ "dreilopz0" ],
+  "authors": [ "Pedro Ivan Lopez" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
 
   "dependencies": {
+    "xunit": "2.1.0-*",
+    "xunit.runner.dnx": "2.1.0-*"
   },
 
   "commands": {
-    "SoftwareEngineeringProblems.Tests": "SoftwareEngineeringProblems.Tests"
+    "SoftwareEngineeringProblems.Tests": "SoftwareEngineeringProblems.Tests",
+    "test": "xunit.runner.dnx"
   },
 
   "frameworks": {
