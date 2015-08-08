@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataStructures.LinkedList;
 
 namespace SoftwareEngineeringProblems
 {
@@ -18,5 +19,16 @@ namespace SoftwareEngineeringProblems
         {
             return x + y;
         }
+
+        static public bool returnTrue()
+        {
+            SinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddLast(1);
+            list.AddLast(2);
+            list.AddLast(3);
+            Console.WriteLine(list);
+            return false;
+        }
+
     }
 }
