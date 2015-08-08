@@ -1,5 +1,4 @@
-# Software engineering problems
+# Software engineering problems in `C#`
 
-- `src/SoftwareEngineeringProblems/project.json`: Class Library project,
-  targets `dotnet`.
-- `tests/SoftwareEngineeringProblems.Tests/project.json`: DNX project.
+Both projects `src/SoftwareEngineeringProblems` and
+`tests/SoftwareEngineeringProblems.Tests` are DNX projects.
