@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataStructures.LinkedList;
+using System.Collections;
 
 namespace SoftwareEngineeringProblems
 {
@@ -30,5 +31,32 @@ namespace SoftwareEngineeringProblems
             return false;
         }
 
+    }
+
+    public class AnIntGenericCollection : IEnumerable<int>
+    {
+        int[] data = { 1, 2, 3 };
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            foreach (int i in data)
+                yield return i;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()     // Explicit implementation
+        {                                           // keeps it hidden.
+            return GetEnumerator();
+        }
+    }
+
+    public class AnIntCollection : IEnumerable
+    {
+        int[] data = { 1, 2, 3 };
+
+        public IEnumerator GetEnumerator()
+        {
+            foreach (var i in data)
+                yield return i;
+        }
     }
 }
