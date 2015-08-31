@@ -5,24 +5,59 @@ using System.Threading.Tasks;
 
 namespace SoftwareEngineeringProblems.Problems
 {
+    // Based on https://github.com/gaylemcd/ctci/blob/master/c-sharp/Chapter03/Q03_3.cs
+    #region
     public class SetOfStacks
     {
         public int MaxCapacity { get; set; }
-
-        private List<LimitedStackDoublyLinked> stacks = new List<LimitedStackDoublyLinked>();
+        public List<LimitedStackDoublyLinked> stacks = new List<LimitedStackDoublyLinked>();
 
         public int Pop()
         {
             return stacks[stacks.Count - 1].Pop();
         }
 
-        public int Peek() { return -1; }
-        public void Push(int item) { }
-        public int PopAt(int index) { return -1; }
+        public int Peek() {
+            return stacks[stacks.Count - 1].Peek();
+        }
+
+        public void Push(int item) {
+            if(!stacks[stacks.Count - 1].Push(item))
+            {
+                var stack = new LimitedStackDoublyLinked(MaxCapacity);
+                stack.Push(item);
+                stacks.Add(stack);
+            }
+        }
+
+        public int PopAt(int index) {
+            return ShiftLeft(index, true);
+        }
 
         private int ShiftLeft(int index, bool removeTop)
         {
-            return -1;
+            var stack = stacks[index];
+            var rtVal = 0; // dummy initial value
+
+            if (removeTop)
+            {
+                rtVal = stack.Pop();
+            }
+            else
+            {
+                rtVal = stack.PopTail();
+            }
+
+            if(stack.Size == 0)
+            {
+                stacks.RemoveAt(index);
+            }
+            else if((index + 1) < stacks.Count)
+            {
+                stack.Push(ShiftLeft(index + 1, false));
+            }
+            
+            return rtVal;
         }
 
         public SetOfStacks(int maxCapacity)
@@ -49,12 +84,18 @@ namespace SoftwareEngineeringProblems.Problems
             }
 
             Node newHead = new Node(value);
-            newHead.Next = Head;
             if(Head != null)
             {
                 Head.Previous = newHead;
+                newHead.Next = Head;
+                Head = newHead;
             }
-            Head = newHead;
+            else
+            {
+                Head = Tail = newHead;
+            }
+
+            Size++;
 
             return true;
         }
@@ -67,13 +108,21 @@ namespace SoftwareEngineeringProblems.Problems
 
             int rtVal = Head.Value;
 
-            Head = Head.Next;
-            Head.Previous = null;
+            if(Size == 1)
+            {
+                Head = Tail = null;
+            }
+            else
+            {
+                Head = Head.Next;
+                Head.Previous = null;
+            }
 
             Size--;
 
             return rtVal;
         }
+
         public int Peek()
         {
             if (Head == null)
@@ -93,11 +142,17 @@ namespace SoftwareEngineeringProblems.Problems
 
             int rtVal = Tail.Value;
 
-            if(Tail == Head)
+            if (Size == 1)
             {
-                Head = Tail.Previous;
+                Head = Tail = null;
             }
-            Tail = Tail.Previous;
+            else
+            {
+                Tail = Tail.Previous;
+                Tail.Next = null;
+            }
+
+            Size--;
 
             return rtVal;
         }
@@ -119,4 +174,5 @@ namespace SoftwareEngineeringProblems.Problems
             }
         }
     }
+    #endregion
 }
