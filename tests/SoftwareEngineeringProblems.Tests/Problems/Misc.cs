@@ -24,7 +24,7 @@ namespace SoftwareEngineeringProblems.Tests
                 Console.WriteLine((int)i);
             }
 
-            Assert.True(false);
+            //Assert.True(false);
         }
     }
 }

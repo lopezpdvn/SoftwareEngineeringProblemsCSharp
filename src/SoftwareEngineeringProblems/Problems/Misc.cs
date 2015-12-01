@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataStructures.LinkedList;
 using System.Collections;
+using DataStructuresAlgorithms.DataStructures.LinkedList;
 
 namespace SoftwareEngineeringProblems
 {

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Xunit;
 using SoftwareEngineeringProblems.Problems;
-using DataStructures.Tree;
 using System.Collections;
+using DataStructuresAlgorithms.DataStructures.Tree;
 
 namespace SoftwareEngineeringProblems.Tests
 {
