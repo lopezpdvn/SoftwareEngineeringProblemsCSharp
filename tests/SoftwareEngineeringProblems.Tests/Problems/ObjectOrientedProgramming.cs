@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 using SoftwareEngineeringProblems.ObjectOrientedProgramming;
 
 namespace SoftwareEngineeringProblems.Tests.ObjectOrientedProgramming
@@ -13,6 +9,7 @@ namespace SoftwareEngineeringProblems.Tests.ObjectOrientedProgramming
         public A a = new A();
         public B b = new B();
         public C c = new C();
+        public D d = new D();
     }
 
     public class ObjectOrientedProgrammingTests : IClassFixture<ObjectsFixture>
@@ -21,6 +18,7 @@ namespace SoftwareEngineeringProblems.Tests.ObjectOrientedProgramming
         private A a;
         private B b;
         private C c;
+        private D d;
 
         public ObjectOrientedProgrammingTests(ObjectsFixture fixture)
         {
@@ -28,6 +26,7 @@ namespace SoftwareEngineeringProblems.Tests.ObjectOrientedProgramming
             a = fixture.a;
             b = fixture.b;
             c = fixture.c;
+            d = fixture.d;
         }
 
         [Fact]
@@ -53,6 +52,27 @@ namespace SoftwareEngineeringProblems.Tests.ObjectOrientedProgramming
         public void InheritedMethodAccesibility()
         {
             Assert.True(b.APublicMethod() == 'A');
+        }
+
+        [Fact]
+        public void AbstractMethods()
+        {
+            Assert.True(a.AnAbstractProperty == "AAbs");
+            Assert.True(b.AnAbstractProperty == "BAbs");
+            Assert.True(c.AnAbstractProperty == "CAbs");
+            Assert.True(d.AnAbstractProperty == "DAbs");
+
+            // Redundant casts
+            Assert.True(((AAbs)a).AnAbstractProperty == "AAbs");
+            Assert.True(((AAbs)b).AnAbstractProperty == "BAbs");
+
+            // Calls overrider method nearest to the type of the object
+            // instance.
+            Assert.True(((AAbs)c).AnAbstractProperty == "BAbs");
+            Assert.True(((A)c).AnAbstractProperty == "BAbs");
+            Assert.True(((B)c).AnAbstractProperty == "BAbs");
+            // Redundant cast
+            Assert.True(((C)c).AnAbstractProperty == "CAbs");
         }
     }
 }
