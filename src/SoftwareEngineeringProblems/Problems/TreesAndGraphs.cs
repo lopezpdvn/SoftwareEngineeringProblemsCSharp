@@ -7,8 +7,8 @@ namespace SoftwareEngineeringProblems.Problems
     public class TreesAndGraphs
     {
         private static void AddToLevelLinkedLists<T>(
-            List<DataStructuresAlgorithms.DataStructures.LinkedList.SinglyLinkedList<Node<T>>> lists,
-            Node<T> node, int depth)
+            List<DataStructuresAlgorithms.DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList<INode<T>>> lists,
+            INode<T> node, int depth)
         {
             try
             {
@@ -18,7 +18,7 @@ namespace SoftwareEngineeringProblems.Problems
             {
                 for(var i = lists.Count; i <= depth; i++)
                 {
-                    lists.Add(new DataStructuresAlgorithms.DataStructures.LinkedList.SinglyLinkedList<Node<T>>());
+                    lists.Add(new DataStructuresAlgorithms.DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList<INode<T>>());
                 }
                 lists[depth].Add(node);
             }

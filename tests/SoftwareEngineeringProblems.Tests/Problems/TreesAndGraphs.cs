@@ -4,6 +4,7 @@ using Xunit;
 using SoftwareEngineeringProblems.Problems;
 using System.Collections;
 using DataStructuresAlgorithms.DataStructures.Tree;
+using DataStructuresAlgorithms.DataStructures.Tree.BinaryTree;
 
 namespace SoftwareEngineeringProblems.Tests
 {
