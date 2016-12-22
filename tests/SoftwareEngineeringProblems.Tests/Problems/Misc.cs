@@ -30,7 +30,7 @@ namespace SoftwareEngineeringProblems.Tests
         [Fact]
         public void TestDynamicArrayList()
         {
-            List<string> daStr = new List<string>();
+            var daStr = new List<string>();
             daStr.Add("one");
             daStr.Add("three");
             daStr.Insert(0, "zero");
@@ -43,7 +43,7 @@ namespace SoftwareEngineeringProblems.Tests
             Assert.Equal(daStr[1], "two");
             Assert.Equal(daStr.IndexOf("three"), 2);
             Assert.Equal(daStr.Count, 4);
-            string[] ans = new string[] {"zero", "two", "three", "four"};
+            var ans = new string[] {"zero", "two", "three", "four"};
             var i = 0;
             foreach(var str in daStr) {
                 Assert.Equal(ans[i++], str);
@@ -59,13 +59,13 @@ namespace SoftwareEngineeringProblems.Tests
         [Fact]
         public void TestIteratorLowLevelString()
         {
-            List<string> daStr = new List<string>();
+            var daStr = new List<string>();
             daStr.Add("one");
             daStr.Add("three");
             daStr.Insert(0, "zero");
             daStr.Insert(2, "two");
             daStr.Add("four");
-            string[] aStr = daStr.ToArray();
+            var aStr = daStr.ToArray();
             var j = 0;
             for(var i = daStr.GetEnumerator(); i.MoveNext();) {
                 var x = i.Current;
@@ -79,6 +79,31 @@ namespace SoftwareEngineeringProblems.Tests
                 Assert.Equal(x, aStr[j++]);
             }
         }
-    }
 
+        [Fact]
+        public void TestLinkedList0()
+        {
+            var x = new LinkedList<string>();
+            x.AddLast("one");
+            x.AddFirst("zero");
+            x.AddLast("four");
+            x.AddAfter(x.First.Next, "two");
+            x.AddBefore(x.Last, "three");
+            var ans = new string[] {"zero", "one", "two", "three", "four"};
+            var i = 0;
+            foreach(var s in x)
+            {
+                Assert.Equal(s, ans[i++]);
+            }
+            Assert.Equal(x.Count, 5);
+            Assert.True(x.Contains("three"));
+            var node2Remove = x.Last.Previous;
+            x.Remove(node2Remove);
+            Assert.False(x.Contains("three"));
+            Assert.Equal(x.Count, 4);
+            Assert.False(x.Contains("cuatro"));
+            x.Last.Value = "cuatro";
+            Assert.True(x.Contains("cuatro"));
+        }
+    }
 }
