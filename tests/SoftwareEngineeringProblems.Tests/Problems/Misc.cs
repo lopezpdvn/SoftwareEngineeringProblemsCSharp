@@ -55,5 +55,30 @@ namespace SoftwareEngineeringProblems.Tests
                 Assert.Equal(ans[i++], str);
             }
         }
+
+        [Fact]
+        public void TestIteratorLowLevelString()
+        {
+            List<string> daStr = new List<string>();
+            daStr.Add("one");
+            daStr.Add("three");
+            daStr.Insert(0, "zero");
+            daStr.Insert(2, "two");
+            daStr.Add("four");
+            string[] aStr = daStr.ToArray();
+            var j = 0;
+            for(var i = daStr.GetEnumerator(); i.MoveNext();) {
+                var x = i.Current;
+                Assert.Equal(x, aStr[j++]);
+            }
+            j = 0;
+            var k = daStr.GetEnumerator();
+            while(k.MoveNext())
+            {
+                var x = k.Current;
+                Assert.Equal(x, aStr[j++]);
+            }
+        }
     }
+
 }
