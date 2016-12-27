@@ -104,6 +104,61 @@ namespace SoftwareEngineeringProblems.Tests
             Assert.False(x.Contains("cuatro"));
             x.Last.Value = "cuatro";
             Assert.True(x.Contains("cuatro"));
+            Assert.Equal(x.Find("two"), x.Last.Previous);
+            Assert.Equal(x.FindLast("two"), x.Last.Previous);
+            Assert.Equal(x.Find("xyz"), null);
+        }
+
+        [Fact]
+        public void TestDictionary0()
+        {
+            var x = new Dictionary<string, string>();
+            x["zero"] = "cero";
+            x["one"] = "uno";
+            x["two"] = "dos";
+            Assert.Equal(x.Count, 3);
+            Assert.Equal("uno", x["one"]);
+            Assert.Throws<KeyNotFoundException>(() => x["ONE"]);
+            x["one"] = "UNO";
+            Assert.Equal("UNO", x["one"]);
+            Assert.True(x.Remove("two"));
+            Assert.False(x.Remove("two"));
+            Assert.Equal(2, x.Count);
+            string val;
+            Assert.False(x.TryGetValue("two", out val));
+            Assert.Equal(default(string), val);
+            Assert.False(x.ContainsKey("two"));
+            Assert.True(x.ContainsValue("UNO"));
+        }
+
+        [Fact]
+        public void TestDictionaryIteration0()
+        {
+            var ansKeys = new HashSet<string>();
+            ansKeys.Add("one");
+            ansKeys.Add("two");
+            ansKeys.Add("zero");
+            ansKeys.Add("three");
+            var ansVals = new HashSet<int>();
+            ansVals.Add(0);
+            ansVals.Add(1);
+            ansVals.Add(2);
+            ansVals.Add(3);
+            var x = new Dictionary<string, int>();
+            x["one"] = 1;
+            x["zero"] = 0;
+            x["three"] = 3;
+            x["two"] = 2;
+
+            foreach(var e in x)
+            {
+                Assert.True(ansKeys.Contains(e.Key));
+                Assert.True(ansVals.Contains(e.Value));
+            }
+            foreach(var k in x.Keys)
+                Assert.True(ansKeys.Contains(k));
+            foreach(var v in x.Values)
+                Assert.True(ansVals.Contains(v));
         }
     }
 }
