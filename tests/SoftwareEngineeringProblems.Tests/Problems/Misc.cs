@@ -54,6 +54,7 @@ namespace SoftwareEngineeringProblems.Tests
             foreach(var str in daStr) {
                 Assert.Equal(ans[i++], str);
             }
+            Assert.Throws<ArgumentOutOfRangeException>(() => daStr[10]);
         }
 
         [Fact]
@@ -107,6 +108,7 @@ namespace SoftwareEngineeringProblems.Tests
             Assert.Equal(x.Find("two"), x.Last.Previous);
             Assert.Equal(x.FindLast("two"), x.Last.Previous);
             Assert.Equal(x.Find("xyz"), null);
+            Assert.True(x.First.Next.Previous == x.First);
         }
 
         [Fact]
@@ -159,6 +161,47 @@ namespace SoftwareEngineeringProblems.Tests
                 Assert.True(ansKeys.Contains(k));
             foreach(var v in x.Values)
                 Assert.True(ansVals.Contains(v));
+        }
+
+        [Fact]
+        public void TestTextMisc()
+        {
+            Assert.Equal("ABCD", "A"+'B'+'C'+"D");
+            var ansChars = new char[]{'a', 'b', 'c', 'd'};
+            string str = "abcd";
+            var i = 0;
+            foreach(var c in str)
+            {
+                Assert.Equal(c, ansChars[i++]);
+            }
+            Assert.Equal(4, "dogs".Length);
+            Assert.Equal(4, ("d"+'o'+'c'+"g").Length);
+
+            Assert.True("" == "emptiness".Substring(9));
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => "emptiness".Substring(10));
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => "emptiness".Substring(2, 8));
+            Assert.True("" == "emptiness".Substring(0, 0));
+        }
+
+        [Fact]
+        public void TestArrayConstruction()
+        {
+            int[] x = new int[4];
+            var y = new int[4];
+            Assert.True(true);
+        }
+
+        [Fact]
+        public void TestStatementsMisc()
+        {
+            int[] data = null;
+            var i = 1;
+            if(data != null && i < data.Length && data[i] != -1)
+            {
+                Assert.True(false);
+            }
         }
     }
 }
