@@ -1,21 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C783657E-7332-4FA1-9B77-3BE2FB9896C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C3630AA-3C07-46EC-9BFC-59F384EE7EFF}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		NuGet.Config = NuGet.Config
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SoftwareEngineeringProblems", "src\SoftwareEngineeringProblems\SoftwareEngineeringProblems.xproj", "{BACEF37D-530A-45BC-9F73-E7D9529D7D1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareEngineeringProblems", "src\SoftwareEngineeringProblems\SoftwareEngineeringProblems.csproj", "{BACEF37D-530A-45BC-9F73-E7D9529D7D1E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SoftwareEngineeringProblems.Tests", "tests\SoftwareEngineeringProblems.Tests\SoftwareEngineeringProblems.Tests.xproj", "{A66BB4AA-9087-49BE-A586-6DF9848CDA81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareEngineeringProblems.Tests", "tests\SoftwareEngineeringProblems.Tests\SoftwareEngineeringProblems.Tests.csproj", "{A66BB4AA-9087-49BE-A586-6DF9848CDA81}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataStructuresAlgorithms", "..\DataStructuresAlgorithmsCSharp\src\DataStructuresAlgorithms\DataStructuresAlgorithms.xproj", "{9319FAE4-96FD-41F3-BDAF-4E8398D4C934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructuresAlgorithms", "..\DataStructuresAlgorithmsCSharp\src\DataStructuresAlgorithms\DataStructuresAlgorithms.csproj", "{9319FAE4-96FD-41F3-BDAF-4E8398D4C934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +41,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BACEF37D-530A-45BC-9F73-E7D9529D7D1E} = {C783657E-7332-4FA1-9B77-3BE2FB9896C2}
 		{A66BB4AA-9087-49BE-A586-6DF9848CDA81} = {C783657E-7332-4FA1-9B77-3BE2FB9896C2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73A8510A-34FB-43C6-916E-D23987E0286B}
 	EndGlobalSection
 EndGlobal

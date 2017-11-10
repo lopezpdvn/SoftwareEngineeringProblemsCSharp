@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>SoftwareEngineeringProblems Class Library</Description>
+    <Authors>Pedro Ivan Lopez</Authors>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>SoftwareEngineeringProblems</AssemblyName>
+    <PackageId>SoftwareEngineeringProblems</PackageId>
+    <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DataStructuresAlgorithmsCSharp\src\DataStructuresAlgorithms\DataStructuresAlgorithms.csproj" />
+  </ItemGroup>
+
+</Project>
